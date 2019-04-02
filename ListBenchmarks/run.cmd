@@ -1,1 +1,1 @@
-dotnet benchmark bin\Release\netcoreapp2.2\ListBenchmarks.dll --runtimes netcoreapp3.0 netcoreapp2.2 --filter *
+dotnet benchmark bin\Release\netcoreapp2.2\ListBenchmarks.dll --disasm --filter *
