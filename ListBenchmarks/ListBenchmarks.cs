@@ -62,19 +62,25 @@ namespace ListBenchmarks
 
         private List<int> intList;
 
-        [Params(1, 5, 9)]
+        [Params(15, 27)]
         public int Index { get; set; }
 
         [GlobalSetup]
         public void Setup()
         {
-            intList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+            intList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30 };
         }
 
         [Benchmark]
-        public int AccessByIndex()
+        public int SumWithAccessByIndex()
         {
-            return intList[Index];
+            int sum = 0;
+            for(int i = 0; i < Index; ++i)
+            {
+                sum += intList[i];
+            }
+
+            return sum;
         }
     }
 }
