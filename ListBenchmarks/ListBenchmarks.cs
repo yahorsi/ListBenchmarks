@@ -6,9 +6,8 @@ using System.Collections.Generic;
 
 namespace ListBenchmarks
 {
-    [DisassemblyDiagnoser]
+    [DisassemblyDiagnoser(printAsm:true, printIL:true, printSource:true)]
     [Config(typeof(TieredCompilationConfig))]
-    [SimpleJob(launchCount: 3, warmupCount: 100, targetCount: 100)]
     public class ListBaseBenchmarks
     {
         private class TieredCompilationConfig : ManualConfig
