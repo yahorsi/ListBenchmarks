@@ -10,6 +10,12 @@ namespace ListBenchmarks
     [Config(typeof(TieredCompilationConfig))]
     public class ListBaseBenchmarks
     {
+        private const int LaunchCount = 1;
+        private const int WarmupCount = 1000;
+        private const int IterationCount = 100;
+        private const int InvocationCount = 1000000;
+
+
         private class TieredCompilationConfig : ManualConfig
         {
             private const string JitTieredCompilation = "COMPLUS_TieredCompilation";
@@ -19,22 +25,38 @@ namespace ListBenchmarks
                 Add(Job.Core
                     .With(CsProjCoreToolchain.NetCoreApp22)
                     .With(new[] { new EnvironmentVariable(JitTieredCompilation, "0") })
-                    .WithId("Tiered Compilation Disabled"));
+                    .WithId("Tiered Compilation Disabled")
+                    .WithLaunchCount(LaunchCount)
+                    .WithWarmupCount(WarmupCount)
+                    .WithIterationCount(IterationCount)
+                    .WithInvocationCount(InvocationCount));
 
                 Add(Job.Core
                     .With(CsProjCoreToolchain.NetCoreApp30)
                     .With(new[] { new EnvironmentVariable(JitTieredCompilation, "0") })
-                    .WithId("Tiered Compilation Disabled"));
+                    .WithId("Tiered Compilation Disabled")
+                    .WithLaunchCount(LaunchCount)
+                    .WithWarmupCount(WarmupCount)
+                    .WithIterationCount(IterationCount)
+                    .WithInvocationCount(InvocationCount));
 
                 Add(Job.Core
                     .With(CsProjCoreToolchain.NetCoreApp22)
                     .With(new[] { new EnvironmentVariable(JitTieredCompilation, "1") })
-                    .WithId("Tiered Compilation Enabled"));
+                    .WithId("Tiered Compilation Enabled")
+                    .WithLaunchCount(LaunchCount)
+                    .WithWarmupCount(WarmupCount)
+                    .WithIterationCount(IterationCount)
+                    .WithInvocationCount(InvocationCount));
 
                 Add(Job.Core
                     .With(CsProjCoreToolchain.NetCoreApp30)
                     .With(new[] { new EnvironmentVariable(JitTieredCompilation, "1") })
-                    .WithId("Tiered Compilation Enabled"));
+                    .WithId("Tiered Compilation Enabled")
+                    .WithLaunchCount(LaunchCount)
+                    .WithWarmupCount(WarmupCount)
+                    .WithIterationCount(IterationCount)
+                    .WithInvocationCount(InvocationCount));
             }
         }
 
